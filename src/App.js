@@ -7,7 +7,7 @@ import Admin from './Roles/Admin/Admin';
 import ServiceAdvisor from './Roles/ServiceAdvisor/ServiceAdvisor';
 import Generic from './Roles/Generic/Generic';
 
-const userRole = "serviceadvisor";
+const userRole = "admin";
 
 class App extends Component {
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
         return ( <ServiceAdvisor/> );
       default:
         return ( <Generic/> );
-    };
+    }
   }
 }
 
