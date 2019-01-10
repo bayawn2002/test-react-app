@@ -1,0 +1,9 @@
+.note-section{
+  width: 300px;
+  height: 100%;
+  /*background-color: blue;*/
+}
+  .note-section p{
+    margin: 5px 5px 5px 10px;
+    text-align: left;
+  }
