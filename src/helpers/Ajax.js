@@ -12,5 +12,8 @@ export function post(url, data){
     },
     body: JSON.stringify(data)
   })
-  .catch((error) => alert('error'));
+  .then( result => {
+    return result.json();
+  })
+  .catch((error) => alert(error));
 }

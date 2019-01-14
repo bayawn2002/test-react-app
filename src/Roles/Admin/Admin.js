@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { BrowserRouter as Router, Route/*, Redirect, withRouter*/} from 'react-router-dom';
 
-import Auth from '../../helpers/Auth';
+import { PrivateRoute }  from '../../helpers/PrivateRoute';
 
 import Header from '../../components/UI/common/Header';
 
@@ -11,7 +11,7 @@ import Home from '../../components/UI/pages/Home/Home';
 import Test from '../../components/UI/pages/Test/Test';
 
 class Admin extends Component {
-
+  
   render(){
     return (
       <div className="App">
@@ -20,9 +20,9 @@ class Admin extends Component {
            <div>
              <Header/>
 
+             <PrivateRoute exact path='/test' component={Test} />
              <Route path="/home" component={Home} />
              <Route path="/login" component={Login} />
-             <Auth path='/test' component={Test} />
            </div>
          </Router>
       </div>
