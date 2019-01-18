@@ -1,5 +1,5 @@
 import React from "react";
-import './Note.css';
+import 'components/listItem/note/Note.css';
 
 function Note(props) {
   return (

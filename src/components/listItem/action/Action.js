@@ -1,5 +1,5 @@
 import React from "react";
-import './Action.css';
+import 'components/listItem/action/Action.css';
 
 function Action(props) {
   var actionText = "";

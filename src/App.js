@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import './App.css';
+import 'App.css';
 
 // Roles
-import Admin from './Roles/Admin/Admin';
-import ServiceAdvisor from './Roles/ServiceAdvisor/ServiceAdvisor';
-import Generic from './Roles/Generic/Generic';
+import Admin from 'roles/admin/Admin';
+import ServiceAdvisor from 'roles/serviceAdvisor/ServiceAdvisor';
+import Generic from 'roles/generic/Generic';
 
 const userRole = "admin";
 

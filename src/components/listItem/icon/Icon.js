@@ -1,5 +1,5 @@
 import React from "react";
-import './Icon.css';
+import 'components/listItem/icon/Icon.css';
 
 function Icon(props) {
   var icon = '',

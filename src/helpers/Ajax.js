@@ -1,5 +1,17 @@
-export function get(url, data){
+import auth from 'helpers/Auth';
 
+export function get(url, data){
+  return fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : auth.getAuthToken()
+    }
+  })
+  .then( result => {
+    return result.json();
+  })
+  .catch((error) => alert(error));
 }
 
 export function post(url, data){

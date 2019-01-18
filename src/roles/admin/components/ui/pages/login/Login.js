@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
-import { post } from '../../../../helpers/Ajax';
+import auth from 'helpers/Auth';
+//import { get } from '../../../../helpers/Ajax';
 
 import md5 from 'md5';
 
@@ -9,50 +10,16 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    // reset login status
-    //this.props.dispatch(userActions.logout());
-
     this.state = {
         username: '',
         password: '',
         submitted: false,
-        redirectToReferrer: false
+        redirectToReferrer: false,
+        loginError: ''
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  }
-  //state = {
-  //  redirectToReferrer: false
-  //}
-  login = (username, password) => {
-
-    fetch('http://localhost:9763/api/v1/login', {
-      method: 'GET',
-      //mode: 'cors',
-      headers: {
-        //Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(
-        {
-          data : { u: username, p: md5(password) }
-        }
-      )
-    })
-    .then( result => {
-      return result.json();
-    })
-    .catch((error) => alert(error));
-    /*post('http://localhost:9763/api/v1/login', { data : { u: username, p: md5(password) }})
-    .then( data => {
-      console.log(data)
-    });*/
-
-    /*localStorage.setItem('authToken', 'test');
-    this.setState(() => ({
-      redirectToReferrer: true
-    }))*/
   }
 
   onChange(e){
@@ -65,8 +32,20 @@ class Login extends Component {
 
     this.setState({ submitted: true });
     const { username, password } = this.state;
-    if (username && password)
-      this.login(username, password);
+    if (username && password){
+      auth.login(username, md5(password))
+      .then( result => {
+        if(!result.loginFailed){
+            this.setState(() => ({
+              redirectToReferrer: true
+            }));
+        }else{
+          this.setState(() => ({
+            loginError : 'Log in failed. Please try again.'
+          }));
+        }
+      });
+    }
   }
 
   render() {
@@ -77,18 +56,14 @@ class Login extends Component {
       return <Redirect to={from} />
     }
 
-    /*return (
-      <div>
-        <p>You must log in to view the page</p>
-        <button onClick={this.login}>Log in</button>
-      </div>
-    )*/
     return (
       <div className="Login">
         <form onSubmit={this.onSubmit}>
           <input type="text" name="username" onChange={this.onChange} />
           <input type="password" name="password" onChange={this.onChange} />
           <input type="submit" value="Submit" />
+
+          <div>{this.state.loginError}</div>
         </form>
       </div>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import './CustomerInfo.css';
+import 'components/listItem/customerInfo/CustomerInfo.css';
 
 function CustomerInfo(props) {
   return (

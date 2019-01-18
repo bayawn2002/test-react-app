@@ -1,10 +1,10 @@
 import React from "react";
-import './ListItem.css';
+import 'components/listItem/ListItem.css';
 
-import CustomerInfo from './CustomerInfo/CustomerInfo';
-import Icon from './Icon/Icon';
-import Action from './Action/Action';
-import Note from './Note/Note';
+import CustomerInfo from 'components/listItem/customerInfo/CustomerInfo';
+import Icon from 'components/listItem/icon/Icon';
+import Action from 'components/listItem/action/Action';
+import Note from 'components/listItem/note/Note';
 
 function ListItem(props) {
   return (
